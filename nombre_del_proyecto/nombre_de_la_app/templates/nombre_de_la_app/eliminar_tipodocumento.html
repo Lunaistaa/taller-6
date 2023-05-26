@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar documento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            display: grid;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .delete-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #6c63ff;
+        }
+
+        h1 {
+            color: #333;
+            margin: 0;
+            font-size: 28px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #6c63ff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #524ad3;
+        }
+
+        .btn-secondary {
+            background-color: #6c63ff;
+            color: #fff;
+        }
+
+        .btn-secondary:hover {
+            background-color: #524ad3;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="delete-icon">
+            <i class="fas fa-trash-alt"></i>
+        </div>
+        <h1>Eliminar documento</h1>
+        <p>¿Estás seguro de que deseas eliminar el tipo de documento "<span id="documento-nombre">{{ tipodocumento.nombre }}</span>"?</p>
+        <form id="eliminar-form" method="post" action="{% url 'eliminar_tipodocumento' tipodocumento.id %}">
+            {% csrf_token %}
+            <div class="button-container">
+                <input class="btn" type="submit" value="Eliminar">
+                <button class="btn btn-secondary" id="volver-btn">Volver a la lista</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#eliminar-form').on('submit', function(e) {
+                e.preventDefault();
+                if (confirm("¿Estás seguro de que quieres eliminar este documento?")) {
+                    this.submit();
+                }
+            });
+    
+            $('#volver-btn').on('click', function() {
+                window.location.href = "http://127.0.0.1:8000/tipodocumentos/lista/";
+                return false;
+            });
+        });
+    </script>       
+</body>
+</html>
+</html>

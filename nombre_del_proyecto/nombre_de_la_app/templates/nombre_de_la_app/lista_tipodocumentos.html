@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de documentos</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .title-icon {
+            margin-right: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        td a {
+            display: inline-block;
+            padding: 6px 12px;
+            text-decoration: none;
+            background-color: #6c63ff;
+            color: #fff;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        td a:hover {
+            background-color: #524ad3;
+        }
+
+        .create-link {
+            display: inline-block;
+            padding: 6px 12px;
+            text-decoration: none;
+            background-color: #4caf50;
+            color: #fff;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .create-link:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-list-ul title-icon"></i> Lista de documentos</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th><i class="fas fa-id-badge title-icon"></i> ID</th>
+                    <th><i class="fas fa-file-alt title-icon"></i> Nombre</th>
+                    <th><i class="fas fa-info-circle title-icon"></i> Descripción</th>
+                    <th><i class="fas fa-cogs title-icon"></i> Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tipodocumento in tipodocumentos %}
+                <tr>
+                    <td>{{ tipodocumento.id }}</td>
+                    <td>{{ tipodocumento.nombre }}</td>
+                    <td>{{ tipodocumento.descripcion }}</td>
+                    <td>
+                        <a href="{% url 'actualizar_tipodocumento' tipodocumento.id %}" class="action-link"><i class="fas fa-edit"></i> Editar</a>
+                        <a href="{% url 'eliminar_tipodocumento' tipodocumento.id %}" class="action-link"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div style="display: flex; justify-content: space-between;">
+            <a class="create-link" href="{% url 'crear_tipodocumento' %}"><i class="fas fa-plus-circle"></i> Crear documento</a>
+            <a class="create-link" href="/"><i class="fas fa-arrow-circle-left"></i> Volver a la página de inicio</a>
+        </div>
+    </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</body>
+</html>

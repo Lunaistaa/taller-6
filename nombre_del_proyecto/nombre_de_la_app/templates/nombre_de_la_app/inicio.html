@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de inicio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    nav ul li {
+      display: inline-block;
+    }
+
+    nav ul li a {
+      display: inline-flex;
+      align-items: center;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      transition: background-color 0.3s;
+      border-radius: 5px;
+    }
+
+    nav ul li a:hover {
+      background-color: #555;
+    }
+
+    nav ul li a .icon {
+      margin-right: 5px;
+    }
+
+    h1 {
+      margin: 40px 0 20px;
+      text-align: center;
+      color: #333;
+      font-size: 36px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    section {
+      background-color: #fff;
+      padding: 30px;
+      margin: 20px auto;
+      max-width: 600px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      margin: 0 0 20px;
+      color: #333;
+      font-size: 28px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      color: #555;
+      list-style: none;
+      text-align: left;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    @media screen and (max-width: 480px) {
+      h1 {
+        font-size: 24px;
+        margin: 20px 0;
+      }
+
+      section {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="menu-list">
+      <li><a href="{% url 'inicio' %}"><i class="fas fa-home icon"></i> Inicio</a></li>
+      <li><a href="{% url 'crear_tipodocumento' %}"><i class="fas fa-plus icon"></i> Crear documento</a></li>
+      <li><a href="{% url 'lista_tipodocumentos' %}"><i class="fas fa-list icon"></i> Lista de documentos</a></li>
+    </ul>
+  </nav>
+
+  <h1>Bienvenido a la página de inicio</h1>
+
+  <section>
+    <h2>Información importante</h2>
+    <ul>
+      <li>Elige una opción del menú para continuar:</li>
+      <li><strong>Crear:</strong> Permite crear un nuevo tipo de documento.</li>
+      <li><strong>Lista:</strong> Muestra una lista de todos los tipos de documentos existentes.</li>
+    </ul>
+  </section>
+</body>
+</html>
